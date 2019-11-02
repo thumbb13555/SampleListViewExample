@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -34,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
 //        ArrayList<String> arraySubject = new ArrayList<>(Arrays.asList(subject));
 
         listView = findViewById(R.id.listView);
-
         final ArrayList<HashMap<String, String>> arrayList = new ArrayList<>();
         for (int i = 0; i < subject.length; i++) {
             HashMap<String, String> hashMap = new HashMap<>();
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
             hashMap.put("score", score.get(i));
             arrayList.add(hashMap);
         }
+        Log.d("Test", "displayListView: "+arrayList);
         String[] from = {"subject", "score"};
         int[] value = {R.id.textView, R.id.textView2};
         simpleAdapter =
@@ -63,6 +65,5 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(getBaseContext(),
                             "科目:"+getName+", 分數"+getValue,Toast.LENGTH_SHORT).show();
                 }
-
     });
 }
